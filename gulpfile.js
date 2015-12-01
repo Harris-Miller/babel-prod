@@ -2,9 +2,17 @@ const gulp = require('gulp');
 const babel = require('gulp-babel');
 const del = require('del');
 const runSequence = require('run-sequence');
+const eslint = require('gulp-eslint');
 
 gulp.task('clean', next => {
   return del('dist', next);
+});
+
+gulp.task('lint', () => {
+  return gulp.src(['src/**/*.js', 'gulpfile.js', '/bin/*.*'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 });
 
 gulp.task('babel', () => {
@@ -15,10 +23,6 @@ gulp.task('babel', () => {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('watch', () => {
-  gulp.watch('src/**/*.js', build);
-});
-
 // copy non-js files to dist
 gulp.task('copy', () => {
   return gulp.src('src/**/!(*.js)')
@@ -26,5 +30,9 @@ gulp.task('copy', () => {
 });
 
 gulp.task('build', next => {
-  return runSequence('clean', ['babel', 'copy'], next);
+  return runSequence('clean', 'lint', ['babel', 'copy'], next);
+});
+
+gulp.task('watch', () => {
+  return gulp.watch('src/**/*.js', ['build']);
 });
