@@ -1,0 +1,29 @@
+{
+  "name": "babel-prod",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "node ./bin/debug"
+  },
+  "dependencies": {
+    "body-parser": "~1.13.2",
+    "cookie-parser": "~1.3.5",
+    "debug": "^2.2.0",
+    "express": "~4.13.1",
+    "hbs": "~3.1.0",
+    "less-middleware": "1.0.x",
+    "morgan": "~1.6.1",
+    "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.2.1",
+    "babel-plugin-transform-runtime": "^6.1.18",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-register": "^6.2.0",
+    "del": "^2.1.0",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.1",
+    "run-sequence": "^1.1.5"
+  }
+}
