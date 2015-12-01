@@ -8,6 +8,12 @@ import bodyParser from 'body-parser';
 import routes from './routes/index';
 import users from './routes/users';
 
+// testing only!
+import Test from './babel-test';
+
+let test = new Test('I am a test');
+test.speak();
+
 var app = express();
 
 // view engine setup

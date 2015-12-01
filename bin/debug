@@ -4,7 +4,19 @@
  * Module dependencies.
  */
 
-require("babel-register");
+require("babel-register")({
+  presets: [], // need to reset
+  plugins: [
+    "syntax-async-functions",
+    "syntax-object-rest-spread",
+    "transform-es2015-destructuring",
+    "transform-es2015-spread",
+    "transform-es2015-modules-commonjs",
+    "transform-object-rest-spread",
+    // "transform-es2015-parameters",
+    "transform-strict-mode"
+  ]
+});
 
 var app = require('../src/app');
 var debug = require('debug')('babel-prod:server');

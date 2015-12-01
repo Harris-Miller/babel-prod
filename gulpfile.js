@@ -18,7 +18,16 @@ gulp.task('lint', () => {
 gulp.task('babel', () => {
   return gulp.src('src/**/*.js')
     .pipe(babel({
-      presets: ['es2015']
+      plugins: [
+        "syntax-async-functions",
+        "syntax-object-rest-spread",
+        "transform-es2015-destructuring",
+        "transform-es2015-spread",
+        "transform-es2015-modules-commonjs",
+        "transform-object-rest-spread",
+        "transform-es2015-parameters",
+        "transform-strict-mode"
+      ]
     }))
     .pipe(gulp.dest('dist'));
 });
